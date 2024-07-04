@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: fts-gateway
+  cloud:  
+    gateway:
+      routes:
+        - id: fts-cep-retriever-route
+          uri: lb://fts-cep-retriever
+          predicates: 
+          - Path=/address/**
+        - id: fts-cep-remote-consumer-route
+          uri: lb://fts-cep-remote-consumer
+          predicates: 
+          - Path=/remote/**
+  main:
+    web-application-type: REACTIVE
+
+
+
+server:
+  port: 8080
+
+# Eureka server configuration
+eureka: 
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance: 
+    prefer-ip-address: true

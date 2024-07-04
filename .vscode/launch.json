@@ -1,0 +1,56 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-FtsCepRemoteConsumerApplication<fts-cep-remote-consumer>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.ftscepconsumer.fts_cep_remote_consumer.FtsCepRemoteConsumerApplication",
+      "projectName": "fts-cep-remote-consumer",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-FtsCepRetrieverApplication<fts-cep-retriever>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.ftscepconsumer.fts_cep_retriever.FtsCepRetrieverApplication",
+      "projectName": "fts-cep-retriever",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=64774 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=fts-cep-retriever"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-FtsEurekaServerApplication<fts-eureka-server>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.ftscepconsumer.fts_eureka_server.FtsEurekaServerApplication",
+      "projectName": "fts-eureka-server",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=64765 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=fts-eureka-server"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-FtsCepConsumerApplication<fts-cep-remote-consumer>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.ftscepconsumer.fts_cep_consumer.FtsCepConsumerApplication",
+      "projectName": "fts-cep-remote-consumer",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-FtsGatewayApplication<fts-gateway>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.ftscepconsumer.fts_gateway.FtsGatewayApplication",
+      "projectName": "fts-gateway",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
