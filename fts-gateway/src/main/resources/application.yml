@@ -12,10 +12,16 @@ spring:
           uri: lb://fts-cep-remote-consumer
           predicates: 
           - Path=/remote/**
+        - id: fts-query-ms-route
+          uri: lb://fts-query-ms
+          predicates: 
+          - Path=/query/**
+        - id: fts-command-ms-route
+          uri: lb://fts-command-ms
+          predicates: 
+          - Path=/command/**
   main:
     web-application-type: REACTIVE
-
-
 
 server:
   port: 8080

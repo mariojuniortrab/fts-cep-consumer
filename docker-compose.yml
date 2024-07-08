@@ -3,21 +3,19 @@ version: '3'
 services:
   redis:
     image: redis:7-alpine
-    restart: always
     ports:
       - "6379:6379"
     environment:
       REDIS_PASSWORD: secret
   redis-insight:
     image: redis/redisinsight:latest
-    restart: always
     ports:
       - "5540:5540"
     volumes:
       - redis-insight:/data
   command-mysql:
     image: mysql:5.7
-    container_name: command-mysql2
+    container_name: command-mysql
     platform: linux/amd64
     ports:
       - "3306:3306"
@@ -29,7 +27,7 @@ services:
       - ./mysql:/var/lib/mysql
   query-mysql:
     image: mysql:5.7
-    container_name: query-mysql2
+    container_name: query-mysql
     platform: linux/amd64
     ports:
       - "3307:3306"
@@ -39,6 +37,11 @@ services:
       MYSQL_PASSWORD: root
     volumes:
       - ./querymysql:/var/lib/mysql
-
+  rabbitmq:
+    image: "rabbitmq:3.8.6-management"
+    container_name: rabbitmq-masterdev
+    ports:
+      - 5672:5672
+      - 15672:15672
 volumes:
   redis-insight:

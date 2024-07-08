@@ -1,5 +1,6 @@
 package com.ftscepconsumer.fts_cep_consumer.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,8 @@ import reactor.core.publisher.Mono;
 @Service
 public class AddressService {
 
-  private final WebClient webClient;
-
-  public AddressService(WebClient.Builder webClientBuilder) {
-    this.webClient = webClientBuilder.baseUrl("https://viacep.com.br/ws/").build();
-  }
+  @Autowired
+  private WebClient webClient;
 
   public Mono<Address> getAddressByCep(String cep) {
     return this.webClient.get()
@@ -31,11 +29,11 @@ public class AddressService {
         .bodyToMono(Address.class)
         .onErrorResume(Is4xxException.class, ex -> {
           if (ex.getStatusCode() == HttpStatus.NOT_FOUND.value()) {
-            return Mono.just(new Address()); // Return a default address or handle as needed
+            return Mono.just(null); // Return a default address or handle as needed
           }
 
           return Mono.error(ex);
         })
-        .onErrorResume(Is5xxException.class, ex -> Mono.just(new Address()));
+        .onErrorResume(Is5xxException.class, ex -> Mono.just(null));
   }
 }

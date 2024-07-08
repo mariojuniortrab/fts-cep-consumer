@@ -2,7 +2,7 @@ package com.ftscepconsumer.fts_command_ms.entities;
 
 import java.io.Serializable;
 
-public class Address implements Serializable {
+public class CommandAddress implements Serializable {
   private static final long serialVersionUID = 1L;
 
   private String cep;
@@ -12,11 +12,11 @@ public class Address implements Serializable {
   private String localidade;
   private String uf;
 
-  public Address() {
+  public CommandAddress() {
 
   }
 
-  public Address(String cep, String logradouro, String complemento, String bairro, String localidade,
+  public CommandAddress(String cep, String logradouro, String complemento, String bairro, String localidade,
       String uf) {
     this.cep = cep;
     this.logradouro = logradouro;
