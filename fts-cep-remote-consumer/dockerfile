@@ -1,0 +1,4 @@
+FROM openjdk:21
+VOLUME /tmp
+ADD ./target/fts-cep-remote-consumer-0.0.1-SNAPSHOT.jar fts-cep-remote-consumer.jar
+ENTRYPOINT ["java","-jar","/fts-cep-remote-consumer.jar"]

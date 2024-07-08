@@ -1,0 +1,4 @@
+FROM openjdk:21
+VOLUME /tmp
+ADD ./target/fts-cep-retriever-0.0.1-SNAPSHOT.jar fts-cep-retriever.jar
+ENTRYPOINT ["java","-jar","/fts-cep-retriever.jar"]
